@@ -7,11 +7,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'QRReader',
       initialRoute: 'home',
       routes: {
         'home' : (context) => HomePage()
       },
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple 
+        
+      ),
     );
   }
 }
