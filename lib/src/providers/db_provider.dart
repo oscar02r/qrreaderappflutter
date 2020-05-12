@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:rqreaderapp/model/scan_model.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'package:rqreaderapp/model/scan_model.dart';
+export  'package:rqreaderapp/model/scan_model.dart';
 
 class DBProvider {
 
@@ -102,7 +104,7 @@ Future<int> updateScan (ScanModel nuevoScan) async {
 }
 
 Future <int> deleteScan (int id) async {
-  
+
   final db  = await database;
   final res = await db.delete( 'Scans', where: 'id = ?', whereArgs: [id] );
 

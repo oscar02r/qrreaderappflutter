@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:qrcode_reader/qrcode_reader.dart';
+import 'package:qrcode_reader/qrcode_reader.dart';
+import 'package:rqreaderapp/src/providers/db_provider.dart';
 import 'mapas_paga.dart';
 import 'direcciones_page.dart';
 
@@ -35,7 +36,7 @@ _scanQR () async {
      //https://www.google.com/
      //geo:40.66592495825039,-74.2078150792969
 
-   //  String futureString = '';
+   String futureString = 'https://www.google.com/';
 
     //  try {
 
@@ -43,11 +44,11 @@ _scanQR () async {
     //  } catch (e) {
     //    futureString = e.toString();
     //  }
-      
-    //  print(futureString);
-    //  if(futureString != null){
-    //        print('Tenemos informacion');
-    //  }
+     
+     if(futureString != null){
+           final scan = ScanModel(valor: futureString);
+           DBProvider.db.nuevoScan(scan);
+     }
 }
   Widget _callPage(int paginaActual) {
     switch (paginaActual) {
