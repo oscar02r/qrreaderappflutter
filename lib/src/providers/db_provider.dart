@@ -59,10 +59,26 @@ nuevoScanRaw (ScanModel nuevoScan) async {
 
 nuevoScan (ScanModel nuevoScan) async {
 
-    final db = await database;
-    
-    final res = db.insert( 'Scans', nuevoScan.toJson() );
+    final db  = await database; 
+    final res = await db.insert( 'Scans', nuevoScan.toJson() );
 
     return res;
-} 
+}
+
+Future<ScanModel> getScanId(int id) async {
+  final db = await database;
+  final res = await db.query('Scans', where: 'id = ?', whereArgs: [id] );
+  return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;
+}
+
+Future<List<ScanModel>> getTodosScans () async {
+
+  final db = await database;
+  final res = await db.query('Scans');
+
+  List<ScanModel> list = res.isNotEmpty 
+                             ? res.map((mapItem) => ScanModel.fromJson(mapItem)).toList():[];
+  return list;
+}
+
 }
