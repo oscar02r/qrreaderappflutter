@@ -81,4 +81,14 @@ Future<List<ScanModel>> getTodosScans () async {
   return list;
 }
 
+Future<List<ScanModel>> getScansPorTipo ( String tipo ) async {
+
+  final db = await database;
+  final res = await db.rawQuery("SELECT * FROM Scans WHERE tipo='$tipo'");
+
+  List<ScanModel> list = res.isNotEmpty 
+                             ? res.map((mapItem) => ScanModel.fromJson(mapItem)).toList():[];
+  return list;
+}
+
 }
