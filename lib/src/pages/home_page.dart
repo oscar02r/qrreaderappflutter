@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//import 'package:qrcode_reader/qrcode_reader.dart';
 import 'mapas_paga.dart';
 import 'direcciones_page.dart';
 
@@ -29,9 +29,25 @@ class _HomePageState extends State<HomePage> {
           ),
     );
   }
-  
-_scanQR () {
 
+_scanQR () async {
+
+     //https://www.google.com/
+     //geo:40.66592495825039,-74.2078150792969
+
+   //  String futureString = '';
+
+    //  try {
+
+    //     futureString = await new QRCodeReader().scan();
+    //  } catch (e) {
+    //    futureString = e.toString();
+    //  }
+      
+    //  print(futureString);
+    //  if(futureString != null){
+    //        print('Tenemos informacion');
+    //  }
 }
   Widget _callPage(int paginaActual) {
     switch (paginaActual) {
