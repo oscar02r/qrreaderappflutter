@@ -3,8 +3,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:rqreaderapp/model/scan_model.dart';
-export  'package:rqreaderapp/model/scan_model.dart';
+import 'package:rqreaderapp/src/model/scan_model.dart';
+export  'package:rqreaderapp/src/model/scan_model.dart';
 
 class DBProvider {
 

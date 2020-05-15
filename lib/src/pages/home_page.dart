@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
-import 'package:rqreaderapp/src/providers/db_provider.dart';
+import 'package:rqreaderapp/src/bloc/scans_bloc.dart';
+import 'package:rqreaderapp/src/model/scan_model.dart';
 import 'mapas_paga.dart';
 import 'direcciones_page.dart';
 
@@ -10,7 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   int _correntIndex = 0;
+  final scansBloc = new ScansBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('QR Scanner'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.delete_forever), onPressed: () {})
+          IconButton(icon: Icon(Icons.delete_forever), onPressed: scansBloc.borrarScanTodos)
         ],
       ),
       body: _callPage(_correntIndex),
@@ -47,7 +50,7 @@ _scanQR () async {
      
      if(futureString != null){
            final scan = ScanModel(valor: futureString);
-           DBProvider.db.nuevoScan(scan);
+           scansBloc.agregarScan(scan);
      }
 }
   Widget _callPage(int paginaActual) {
